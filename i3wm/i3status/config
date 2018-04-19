@@ -1,0 +1,78 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+order += "volume master"
+order += "disk /"
+order += "run_watch DHCP"
+order += "path_exists VPN"
+order += "wireless _first_"
+order += "ethernet enp0s25"
+order += "battery 0"
+order += "load"
+order += "tztime local"
+
+volume master {
+	format = " ♪ %volume  "
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+	# termsyn font
+	#format = "À %volume "
+}
+
+wireless _first_ {
+        format_up = "WiFi: (%quality at %essid) %ip"
+        format_down = "WiFi: ✗"
+}
+
+ethernet enp0s25 {
+        # if you use %speed, i3status requires root privileges
+        format_up = "E: %ip (%speed)"
+        format_down = "E: ✗"
+}
+
+battery 0 {
+     format = "%status %percentage %remaining %emptytime"
+     format_down = "No battery"
+     status_chr ="⚡"  
+     status_bat = "🔋"
+     #status_unk = "?"
+     status_full = "⚇"
+     path = "/sys/class/power_supply/BAT%d/uevent"
+     low_threshold = 10
+}
+
+
+run_watch DHCP {
+        pidfile = "/var/run/dhclient*.pid"
+	format="DHCP: ✓"
+	format_down="DHCP: ✗"
+}
+
+path_exists VPN {
+        path = "/proc/sys/net/ipv4/conf/tun0"
+        format="VPN: ✓"
+        format_down="VPN: ✗"
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
+
+load {
+        format = "↕ %1min"
+}
+
+disk "/" {
+        format = "/ [%avail]"
+}
