@@ -110,14 +110,14 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Ctrl+l exec "/home/shieldse/.config/i3/i3lock-fancy-multimonitor/lock"
+bindsym $mod+Ctrl+l exec "~/.config/i3/i3lock-fancy-multimonitor/lock"
 bindsym $mod+Shift+comma move workspace to output left
 bindsym $mod+comma focus output left
 bindsym $mod+Shift+period move workspace to output right
 bindsym $mod+period focus output right
 bindsym $mod+Ctrl+Left workspace prev
 bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+r exec /home/shieldse/.config/i3/mv-wkspc.sh
+bindsym $mod+Ctrl+r exec ~/.config/i3/mv-wkspc.sh
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
