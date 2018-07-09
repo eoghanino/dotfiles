@@ -24,9 +24,10 @@ func browse(browser string, c net.Conn) {
 }
 
 func main() {
+	listenOn := flag.String("listen", "localhost:7531", "Listen on: default localhost:7531")
 	browser := flag.String("browser", "firefox", "Browser to use")
 	flag.Parse()
-	ln, err := net.Listen("unix", "/tmp/go.sock")
+	ln, err := net.Listen("tcp4", *listenOn)
 	if err != nil {
 		log.Fatal("Listen error: ", err)
 	}
